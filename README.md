@@ -55,6 +55,8 @@ ParaBankTests.Selenium/
 | TC06 | Invalid username should show error | Negative |
 | TC07 | Invalid credentials should show error | Negative |
 | TC08 | SQL injection attempt should not bypass login | Security |
+| TC09 | Valid credentials with trailing spaces should login successfully | Edgecase |
+| TC10 | Valid credentials with enter key should login successfully | Edgecase |
 
 ### Registration Tests
 | Test | Description | Type |
