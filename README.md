@@ -113,7 +113,7 @@ dotnet test --filter Category=Registration
 
 ---
 
-## 📊 Allure Reports
+##  Allure Reports
 
 ### Install Allure CLI
 ```bash
@@ -139,7 +139,7 @@ allure serve allure-results
 
 ---
 
-## 🏗️ Automation Design
+##  Automation Design
 
 ### Page Object Model
 Each page has its own class with locators and actions:
@@ -167,7 +167,7 @@ BasePage       ← shared actions (Click, Type, Find)
 
 ---
 
-## 🔧 Configuration
+##  Configuration
 
 ### `Config/TestSettings.cs`
 ```csharp
@@ -190,7 +190,7 @@ options.AddArgument("--headless=new");
 
 ---
 
-## 📌 Key Dependencies
+##  Key Dependencies
 ```xml
 <PackageReference Include="Selenium.WebDriver"       Version="4.27.0" />
 <PackageReference Include="WebDriverManager"         Version="2.17.4" />
@@ -203,13 +203,13 @@ options.AddArgument("--headless=new");
 
 ---
 
-## 👤 Author
+##  Author
 
 **Lakshmi Anbarasan**
 - GitHub: [@lakshmianbarasan24](https://github.com/lakshmianbarasan24)
 
 ---
 
-## 📄 License
+##  License
 
 This project is for assessment and educational purposes only.
