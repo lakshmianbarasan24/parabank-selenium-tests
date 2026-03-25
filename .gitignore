@@ -1,0 +1,21 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Allure
+allure-results/
+allure-report/
+Screenshots/
+
+# dotnet
+*.nupkg
+project.lock.json
+
+# OS
+.DS_Store
+Thumbs.db 
