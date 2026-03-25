@@ -1,4 +1,4 @@
-﻿using OpenQA.Selenium;
+using OpenQA.Selenium;
 using ParaBankTests.Selenium.Base;
 
 namespace ParaBankTests.Selenium.Pages
@@ -20,11 +20,12 @@ namespace ParaBankTests.Selenium.Pages
         public string GetErrorMessage() => GetText(ErrorMessage);
         public bool IsLogoutVisible() => IsDisplayed(LogoutLink);
 
-        public void Login(string username, string password)
+        public void Login(string username, string password, bool isEnter = false)
         {
             EnterUsername(username);
             EnterPassword(password);
-            ClickLogin();
+            if (!isEnter)
+                 ClickLogin();
             WaitForPageLoad();
         }
     }
