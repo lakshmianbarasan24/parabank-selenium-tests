@@ -4,7 +4,7 @@ Automated UI test suite for [ParaBank](https://parabank.parasoft.com/) using Sel
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Tool | Purpose |
 |---|---|
@@ -18,7 +18,7 @@ Automated UI test suite for [ParaBank](https://parabank.parasoft.com/) using Sel
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 ```
 ParaBankTests.Selenium/
 ├── Base/
@@ -42,7 +42,7 @@ ParaBankTests.Selenium/
 
 ---
 
-## ✅ Test Scenarios
+##  Test Scenarios
 
 ### Login Tests
 | Test | Description | Type |
@@ -54,7 +54,7 @@ ParaBankTests.Selenium/
 | TC05 | Invalid passsword should show error | Negative |
 | TC06 | Invalid username should show error | Negative |
 | TC07 | Invalid credentials should show error | Negative |
-| TC08 | SQL injection attempt should not bypass login | Edge Case |
+| TC08 | SQL injection attempt should not bypass login | Security |
 
 ### Registration Tests
 | Test | Description | Type |
@@ -63,14 +63,14 @@ ParaBankTests.Selenium/
 | TC02 | Empty form should show all required errors | Negative |
 | TC03 | Mismatched passwords should show error | Negative |
 | TC04 | Duplicate username should show error | Negative |
-| TC05 | Missing first name should show error | Boundary |
-| TC06 | Missing username should show error | Boundary |
-| TC07 | Missing password should show error | Boundary |
+| TC05 | Missing first name should show error | Negative |
+| TC06 | Missing username should show error | Negative |
+| TC07 | Missing password should show error | Negative |
 | TC08 | Page title and header validation | Smoke |
 
 ---
 
-## ⚙️ Prerequisites
+##  Prerequisites
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [Google Chrome](https://www.google.com/chrome/) (latest)
@@ -79,7 +79,7 @@ ParaBankTests.Selenium/
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### 1. Clone the Repository
 ```bash
@@ -163,7 +163,6 @@ BasePage       ← shared actions (Click, Type, Find)
 
 ### Screenshot on Failure
 - Automatically captured on test failure
-- Attached directly to Allure report
 - Stored in `Screenshots/` folder
 
 ---
@@ -187,49 +186,6 @@ public static class TestSettings
 Uncomment in `BaseTest.cs`:
 ```csharp
 options.AddArgument("--headless=new");
-```
-
----
-
-## 🔄 CI/CD — GitHub Actions
-
-Tests run automatically on every push and pull request.
-
-### Workflow file: `.github/workflows/selenium-tests.yml`
-```yaml
-name: Selenium NUnit Tests
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Setup .NET 8
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '8.0.x'
-      - name: Install Chrome
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
-      - name: Restore
-        run: dotnet restore
-      - name: Build
-        run: dotnet build --no-restore
-      - name: Test
-        run: dotnet test --no-build --logger "trx;LogFileName=results.trx"
-      - name: Upload Results
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: test-results
-          path: "**/*.trx"
 ```
 
 ---
