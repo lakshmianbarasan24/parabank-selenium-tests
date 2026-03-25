@@ -1,7 +1,8 @@
-﻿using Allure.NUnit;
+using Allure.NUnit;
 using Allure.NUnit.Attributes;
 using FluentAssertions;
 using NUnit.Framework;
+using OpenQA.Selenium;
 using ParaBankTests.Selenium.Base;
 using ParaBankTests.Selenium.Helpers;
 using ParaBankTests.Selenium.Pages;
@@ -103,7 +104,7 @@ namespace ParaBankTests.Selenium.Tests
         }
 
         [Test]
-        [AllureTag("Negative")]
+        [AllureTag("Security")]
         [AllureSeverity(Allure.Net.Commons.SeverityLevel.minor)]
         [Description("TC08 - SQL injection attempt should not bypass login")]
         public void Login_WithSqlInjection_ShouldNotBypassAuth()
@@ -128,6 +129,30 @@ namespace ParaBankTests.Selenium.Tests
 
             (blockedByCloudflare || showsLoginError || notLoggedIn)
                 .Should().BeTrue("SQL injection should never grant access");
+        }
+
+        [Test]
+        [AllureTag("Edge Case")]
+        [AllureSeverity(Allure.Net.Commons.SeverityLevel.critical)]
+        [Description("TC09 - Valid credentials with trailing spaces should login successfully")]
+        public void Login_WithValidCredentialsWithTrailingSpaces_ShouldSucceed()
+        {
+            _loginPage.Login(TestData.ValidUsername+" ", TestData.ValidPassword+" ");
+
+            _loginPage.IsLogoutVisible()
+                .Should().BeTrue("valid credentials should redirect to account page and see Logout");
+        }
+
+        [Test]
+        [AllureTag("Edge Case")]
+        [AllureSeverity(Allure.Net.Commons.SeverityLevel.critical)]
+        [Description("TC10 - Valid credentials with enter key should login successfully")]
+        public void Login_WithValidCredentialsWithEnterKey_ShouldSucceed()
+        {
+            _loginPage.Login(TestData.ValidUsername, TestData.ValidPassword+Keys.Enter, true);
+
+            _loginPage.IsLogoutVisible()
+                .Should().BeTrue("valid credentials should redirect to account page and see Logout");
         }
     }
 }
