@@ -39,7 +39,7 @@ namespace ParaBankTests.Selenium.Tests
             _loginPage.Login(TestData.EmptyUsername, TestData.EmptyPassword);
 
             _loginPage.GetErrorMessage()
-                .Should().Be("Please enter a username and password", because: "user entered empty credentials" );
+                .Should().Be("Please enter a username and password.", because: "user entered empty credentials" );
         }
 
         [Test]

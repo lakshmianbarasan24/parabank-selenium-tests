@@ -10,7 +10,7 @@ namespace ParaBankTests.Selenium.Pages
         private static readonly By PasswordField = By.Name("password");
         private static readonly By LoginButton = By.CssSelector("input[value='Log In']");
         private static readonly By ErrorMessage = By.CssSelector(".error");
-        private static readonly By LogoutLink = By.LinkText("Log Ot");
+        private static readonly By LogoutLink = By.LinkText("Log Out");
 
         public LoginPage(IWebDriver driver) : base(driver) { }
 
